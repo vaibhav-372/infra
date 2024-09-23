@@ -6,7 +6,7 @@ const Nav = () => {
     return (
         <div>
           {/* Navigation */}
-          <nav className="bg-gray-800/90 text-white p-4 fixed w-full z-10">
+          <nav className="bg-[#7ab24d]/90 text-white p-4 fixed w-full z-10">
             <ul className="flex justify-between items-center">
               <div className="flex items-center">
                 <img src="http://indubuildingblocks.com/wp-content/uploads/2020/11/Untitled-design-19.png" alt="logo" className="h-10" />
