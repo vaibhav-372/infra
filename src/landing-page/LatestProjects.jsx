@@ -12,10 +12,9 @@ const LatestProjects = () => {
     try {
       const response = await axios.get("http://localhost:3000/api/projects");
       const projects = Array.isArray(response.data) ? response.data : [];
-      // Sort projects by creation date (assuming `createdAt` is the field) and limit to 3
       const sortedProjects = projects
         .sort((a, b) => new Date(b.createdAt) - new Date(a.createdAt))
-        .slice(0, 3);
+        .slice(0, 4);
       setLatestProjects(sortedProjects);
     } catch (error) {
       console.error("Error fetching latest projects:", error);
@@ -24,43 +23,55 @@ const LatestProjects = () => {
   };
 
   return (
-    <div className="p-8 animate-fadeIn">
-      {/* <h2 className="text-2xl font-bold mb-4">Latest Projects</h2> */}
-      <ul className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-8">
+    <div className="py-10 px-5 bg-gray-200 m-16">
+      <h2 className="text-2xl font-semibold text-gray-800 text-center mb-6">
+        Latest Projects
+      </h2>
+      <ul className="grid grid-cols-1 gap-8 md:grid-cols-1 lg:grid-cols-1 xl:grid-cols-2 lg:m-24 sm:m-24">
         {latestProjects.length > 0 ? (
           latestProjects.map((project) => (
             <li
               key={project._id}
-              className="bg-white shadow-lg hover:shadow-xl transition-shadow duration-300 rounded-lg overflow-hidden"
+              className="bg-white shadow-lg hover:shadow-xl transition-shadow duration-300 rounded-lg overflow-hidden p-5 flex flex-col md:flex-row md:items-start md:space-x-5"
             >
-              {/* Image */}
-              <div className="relative">
+              {/* Image Area - Center only on md */}
+              <div className="relative w-full h-48 flex-shrink-0 md:w-48 md:h-48 flex md:justify-center md:items-center">
                 <img
                   src={`http://localhost:3000${project.imageUrl}`}
                   alt={project.projectName}
-                  className="w-full h-52 object-cover rounded-t-lg"
+                  className="w-full h-full object-cover rounded-lg"
                 />
-                <span className="absolute top-2 right-2 bg-blue-500 text-white text-xs px-2 py-1 rounded">
+                {/* Acres Label */}
+                <span className="absolute top-2 right-2 bg-blue-500 text-white text-xs px-3 py-1 rounded">
                   {project.totalExtent} acres
                 </span>
               </div>
 
-              {/* Project Details */}
-              <div className="p-4">
-                <h4 className="text-lg font-semibold text-gray-800 mb-1">{project.projectName}</h4>
-                <p className="text-gray-600 text-sm mb-4">
-                  <span className="font-semibold">Landmark:</span> {project.landMark}
+              {/* Content Area */}
+              <div className="flex flex-col justify-center items-center md:items-start w-full mt-4 md:mt-0 text-center md:text-left">
+                <h4 className="text-lg font-semibold text-gray-900 mb-2 capitalize">
+                  {project.projectName}
+                </h4>
+                <p className="text-gray-700 text-sm mb-1">
+                  <span className="font-semibold">Landmark:</span>{" "}
+                  {project.landMark}
                 </p>
-                <div className="flex justify-center">
-                  <button className="bg-blue-500 text-white text-sm px-4 py-2 rounded-lg hover:bg-blue-600 transition duration-200">
-                    View Details
-                  </button>
-                </div>
+                <p className="text-gray-700 text-sm mb-3">
+                  <span className="font-semibold">Typology:</span>{" "}
+                  {project.typology || "N/A"}
+                </p>
+
+                {/* View Details Button */}
+                <button className="bg-blue-500 text-white text-sm px-4 py-2 rounded-lg hover:bg-blue-600 transition duration-200 mt-4">
+                  View Details
+                </button>
               </div>
             </li>
           ))
         ) : (
-          <p className="text-center col-span-full text-gray-600">No latest projects available.</p>
+          <p className="text-center col-span-full text-gray-600">
+            No latest projects available.
+          </p>
         )}
       </ul>
     </div>

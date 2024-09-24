@@ -9,14 +9,22 @@ import Footer from "./Footer";
 const Home = () => {
   return (
     <div className="relative">
-      <div>
-        <img
+      <div
+        className="bg-[url('src/assets/infra-landing-bg1.jpg')] w-full h-[720px] bg-cover bg-no-repeat flex items-center"
+      >
+        {/* <img  
           src="src/assets/infra-landing-bg1.jpg"
           className="w-screen max-h-[720px] object-cover"
           alt="landing-bg"
-        />
+        /> */}
 
-        <div className="absolute left-10 top-1/4 transform md:scale-75 lg:scale-100 lg:top-1/3 lg:left-7 xl:scale-125 xl:left-24 -translate-y-1/4 md:-translate-y-60 md:left-0  hidden md:block">
+        <div className="absolute text-white text-center flex justify-end pr-9 w-full">
+          <h1 className="text-5xl text-white font-bold md:text-2xl lg:text-4xl xl:text-5xl">The Evolution of <span className="text-orange-500 font-extrabold">Luxury</span> Starts Here</h1>
+        </div>
+        <div
+          className="absolute left-10 transform md:scale-75 lg:scale-100 lg:left-7 xl:scale-90 xl:left-20 md:left-0 hidden md:block"
+        // className="md:block hidden absolute"
+        >
           <ContactForm />
         </div>
       </div>
@@ -38,16 +46,13 @@ const Home = () => {
           explore more
         </Link>
       </div>
-      <div className="bg-[#9bda54]/75 m-14">
-        <h1 className="text-3xl font-bold text-center p-5 ">Our Benifits</h1>
-        <OurBenifits/>
-      </div>
+        <OurBenifits />
       {/* <div>
         <h1 className="text-3xl font-bold text-center p-5">Why Choose Us</h1>
         <WhyChooseUs/>
       </div> */}
       <div>
-        <Footer/>
+        <Footer />
       </div>
       <Routes>
         <Route path="gallery" element={<Gallery />} />
