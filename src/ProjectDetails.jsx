@@ -1,6 +1,8 @@
 import React, { useEffect, useState } from "react";
 import { useParams } from "react-router-dom";
 import axios from "axios";
+import LatestProjects from "./landing-page/LatestProjects";
+import Nav from "./landing-page/Nav";
 
 const ProjectDetails = () => {
   const { projectName } = useParams();
@@ -33,17 +35,16 @@ const ProjectDetails = () => {
         />
         <div className="p-4">
           <h2 className="text-2xl font-bold mb-2">{project.projectName}</h2>
-          <p><strong>Landmark:</strong> {project.landMark}</p>
-          <p><strong>Typology:</strong> {project.typology || "N/A"}</p>
           <p><strong>Total Extent:</strong> {project.totalExtent} acres</p>
+          <p><strong>Typology:</strong> {project.typology || "N/A"}</p>
+          <p><strong>Landmark:</strong> {project.landMark}</p>
           {/* Add more project details as needed */}
         </div>
       </div>
 
       {/* Latest Projects Section */}
       <div className="mt-8">
-        <h3 className="text-xl font-semibold mb-4">Latest Projects</h3>
-        <LatestProjects /> {/* Your existing LatestProjects component */}
+        <LatestProjects/>
       </div>
     </div>
   );

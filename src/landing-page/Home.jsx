@@ -1,6 +1,5 @@
 import { Link, Route, Routes } from "react-router-dom";
 import ContactForm from "./ContactForm";
-import Gallery from "./Gallery";
 import LatestProjects from "./LatestProjects";
 import OurBenifits from "./OurBenifits";
 import Footer from "./Footer";
