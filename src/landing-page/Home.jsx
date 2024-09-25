@@ -3,7 +3,6 @@ import ContactForm from "./ContactForm";
 import Gallery from "./Gallery";
 import LatestProjects from "./LatestProjects";
 import OurBenifits from "./OurBenifits";
-import WhyChooseUs from "./WhyChooseUs";
 import Footer from "./Footer";
 
 const Home = () => {
@@ -38,15 +37,9 @@ const Home = () => {
       <h1 className="text-3xl font-bold mt-10 text-center">Find your dream house</h1>
       <div>
         <LatestProjects />
+        
       </div>
-      <div className="p-7 flex justify-center">
-        <Link className="cursor-pointer text-center h-7 w-44 font-bold text-xl flex justify-center items-center border-black border-2 rounded-full left-1/2 p-5 bg-green-400"
-          to="/gallery"
-        >
-          explore more
-        </Link>
-      </div>
-        <OurBenifits />
+      <OurBenifits />
       {/* <div>
         <h1 className="text-3xl font-bold text-center p-5">Why Choose Us</h1>
         <WhyChooseUs/>
@@ -54,9 +47,6 @@ const Home = () => {
       <div>
         <Footer />
       </div>
-      <Routes>
-        <Route path="gallery" element={<Gallery />} />
-      </Routes>
     </div>
   );
 };

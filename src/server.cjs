@@ -82,6 +82,22 @@ app.get("/api/projects", async (req, res) => {
   }
 });
 
+app.get('/api/projects/:projectName', async (req, res) => {
+  try {
+    const { projectName } = req.params;
+    const project = await Project.findOne({ projectName });
+
+    if (!project) {
+      return res.status(404).json({ message: 'Project not found' });
+    }
+
+    res.status(200).json(project);
+  } catch (error) {
+    console.error('Error fetching project:', error);
+    res.status(500).json({ message: 'Internal server error' });
+  }
+});
+
 const port = process.env.PORT || 3000;
 app.listen(port, () => {
   console.log(`Server running on port ${port}`);

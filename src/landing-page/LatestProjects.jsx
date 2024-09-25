@@ -1,5 +1,7 @@
 import React, { useEffect, useState } from "react";
 import axios from "axios";
+import Gallery from "./Gallery";
+import { Link, Route, Routes } from "react-router-dom";
 
 const LatestProjects = () => {
   const [latestProjects, setLatestProjects] = useState([]);
@@ -25,7 +27,7 @@ const LatestProjects = () => {
   return (
     <div className="py-10 px-5 bg-gray-200 m-16">
       <h2 className="text-2xl font-semibold text-gray-800 text-center mb-6">
-        Latest Projects
+        Our Latest Projects
       </h2>
       <ul className="grid grid-cols-1 gap-8 md:grid-cols-1 lg:grid-cols-1 xl:grid-cols-2 lg:m-24 sm:m-24">
         {latestProjects.length > 0 ? (
@@ -62,9 +64,9 @@ const LatestProjects = () => {
                 </p>
 
                 {/* View Details Button */}
-                <button className="bg-blue-500 text-white text-sm px-4 py-2 rounded-lg hover:bg-blue-600 transition duration-200 mt-4">
-                  View Details
-                </button>
+                <Link to={`/project/${project.projectName}`} className="bg-[#96d85f] text-white text-sm px-4 py-2 rounded-lg hover:bg-[#93f544] transition duration-200 mt-4">
+                    View Details
+                  </Link>
               </div>
             </li>
           ))
@@ -74,6 +76,16 @@ const LatestProjects = () => {
           </p>
         )}
       </ul>
+      <div className="p-7 flex justify-center">
+          <Link className="cursor-pointer text-center h-7 w-44 font-bold text-xl flex justify-center items-center border-black border-2 rounded-full left-1/2 p-5 bg-green-400"
+            to="/projects"
+          >
+            explore more
+          </Link>
+        </div>
+        <Routes>
+        <Route path="projects" element={<Gallery />} />
+      </Routes>
     </div>
   );
 };
